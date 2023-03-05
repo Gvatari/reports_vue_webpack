@@ -1,11 +1,35 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import TurnsYearVue from '../views/turns/year.vue'
+import TurnsMonthVue from '../views/turns/month.vue'
+import TurnsWeekVue from '../views/turns/week.vue'
+import TurnsDayVue from '../views/turns/day.vue'
 
 const routes = [
   {
     path: '/',
     name: 'home',
     component: HomeView
+  },
+  {
+    path: '/turn/year',
+    name: 'year',
+    component: TurnsYearVue
+  },
+  {
+    path: '/turn/month',
+    name: 'month',
+    component: TurnsMonthVue
+  },
+  {
+    path: '/turn/week',
+    name: 'week',
+    component: TurnsWeekVue
+  },
+  {
+    path: '/turn/day',
+    name: 'day',
+    component: TurnsDayVue
   },
   {
     path: '/about',

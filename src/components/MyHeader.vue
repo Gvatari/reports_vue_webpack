@@ -1,19 +1,30 @@
 <template>
-    <div class="header">
-        <nav>
-            <router-link to="/">Home</router-link> |
-            <router-link to="/about">About</router-link>
-        </nav>
+    <div>
+        <div class="header">
+            <nav>
+                <router-link to="/">Home</router-link> |
+                <router-link to="/about">About</router-link>
+            </nav>
 
-        <div class="making_container">
-            <div class='making_logo'></div>
-            <div class="making_name">Производство</div>
-        </div>
-        <div class="menu">
-            <div class="item_menu" v-for="menuHeaderList in menuHeaderLists" :key="menuHeaderList.value">
-                <div class="icon_menu"><img :src="menuHeaderList.img"></div>
-                <div class="name_menu">{{ menuHeaderList.title }}</div>
+            <div class="making_container">
+                <div class='making_logo'></div>
+                <div class="making_name">Производство</div>
             </div>
+            <div class="menu">
+                <div class="item_menu" v-for="menuHeaderList in menuHeaderLists" :key="menuHeaderList.value">
+                    <div class="icon_menu"><img :src="menuHeaderList.img"></div>
+                    <div class="name_menu" @click="changeActiveMenu(menuHeaderList.id)">{{ menuHeaderList.title }}</div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <template v-for="subMenuTurnsList in subMenuTurnsLists" :key="subMenuTurnsList.value" >
+                <div v-if="idActiveMenu == subMenuTurnsList.parentId">
+                    <router-link :to="subMenuTurnsList.url">
+                        <div>{{ subMenuTurnsList.title }}</div>
+                    </router-link>
+                </div>
+            </template>
         </div>
     </div>
 
@@ -27,16 +38,25 @@ export default {
     data() {
         return {
             menuHeaderLists: [
-                { id: '1', title: 'Обороты', img: '../../public/turns.svg' }
+                { id: '1', title: 'Обороты', img: '../../public/turns.svg' },
+                { id: '2', title: 'QWERTY', img: '../../public/turns.svg' },
             ],
-            subMenuTurnsList: [
+            subMenuTurnsLists: [
                 { id: '1', title: 'Год', parentId: '1', url: '/turn/year' },
                 { id: '2', title: 'Месяц', parentId: '1', url: '/turn/month' },
                 { id: '3', title: 'Неделя', parentId: '1', url: '/turn/week' },
-                { id: '4', title: 'Сутки', parentId: '1', url: '/turn/day' }
-            ]
+                { id: '4', title: 'Сутки', parentId: '1', url: '/turn/day' },
+                { id: '5', title: 'qwerty', parentId: '2', url: '/turn/day' },
+                { id: '6', title: 'qwertyyz', parentId: '2', url: '/turn/day' }
+            ], 
+            idActiveMenu: 1
         }
-    }
+    },
+    methods: {
+        changeActiveMenu(id) {
+            this.idActiveMenu = id;
+        }
+    },
 }
 </script>
 
