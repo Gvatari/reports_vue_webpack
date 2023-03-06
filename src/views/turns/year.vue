@@ -1,13 +1,17 @@
 <template>
-    <div>year</div>
- </template>
+    <div>
+        <TitlePages general_message="Выпуск продукции" private_message="2022г." />
+    </div>
+</template>
  
- <script>
- export default {
+<script>
+import TitlePages from '@/components/TitlePages.vue'
+export default {
+    name: 'year',
+    components: {
+        TitlePages
+    }
+}
+</script>
  
- }
- </script>
- 
- <style>
- 
- </style>
+<style></style>
