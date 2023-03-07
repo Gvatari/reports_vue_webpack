@@ -1,9 +1,21 @@
 <template>
    <div class="tree_container">
-        <div class="tree_parent" v-for="TreeElement in TreeElements" :key="TreeElement.value">
-            <div class="tree_name">{{ TreeElement.title }}</div>
+        <div class="tree_parent" 
+            v-for="TreeElement in TreeElements" 
+            :key="TreeElement.value"
+        >
+            <div class="tree_name">
+                <input type="checkbox"
+                    :TreeElements = "TreeElement.selected"
+                    @input="tickChildren"
+                >
+                {{ TreeElement.title }}
+            </div>
             <div class="tree_children">
-                <tree :TreeElements="TreeElement.childrenElements"></tree>
+                <tree 
+                    :TreeElements="TreeElement.childrenElements"
+                >
+                </tree>
             </div>
         </div>
     </div>
@@ -18,6 +30,11 @@ data() {
        
     }
 },
+methods: {
+    tickChildren(event) {
+        console.log(event.selected);
+    }
+}
 }
 </script>
 

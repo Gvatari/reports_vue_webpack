@@ -19,24 +19,29 @@ export default {
             TreeElements: [
                 {
                     title: 'Альт-Пласт',
+                    selected: false,
                     childrenElements: [
                         {
                             title: 'Готовая продукция',
+                            selected: false,
                             childrenElements: [
                                 {
                                     title: 'Кухня',
+                                    selected: false,
                                     childrenElements: []
                                 }
                             ]
                         },
                         {
                             title: 'Произведённые детали',
+                            selected: false,
                             childrenElements: []
                         },
                     ]
                 },
                 {
                     title: 'ИП-Панков',
+                    selected: false,
                     childrenElements: {}
                 }
             ]
